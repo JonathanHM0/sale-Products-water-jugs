@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagenes/xicuazul.png">
+    <link rel="stylesheet" href="Styles.css">
+    <title>Garrafones</title>
+    <style>
+      
+  </style>
+</head>
+<body>
+  <h1>Garrafones <img src="imagenes/xicuazul.png" alt="xicuazul"></h1> 
+    <form id="formulario">
+        <label for="precioBase">Ingrese el precio base por garrafón:</label>
+        <input type="number" id="precioBase" name="precioBase" required>
+        <br>
+        <label for="garrafonesIniciales">Ingrese la cantidad inicial de garrafones en la camioneta:</label>
+        <input type="number" id="garrafonesIniciales" name="garrafonesIniciales" required>
+        <br>
+        <label for="garrafonesVendidos">Ingrese la cantidad de garrafones vendidos:</label>
+        <input type="number" id="garrafonesVendidos" name="garrafonesVendidos" required>
+        <br>
+        <label>¿Hubo precios especiales?</label>
+        <input type="radio" name="preciosEspeciales" value="si" onclick="mostrarCantidadPreciosEspeciales()" required> Sí
+        <input type="radio" name="preciosEspeciales" value="no" onclick="ocultarPreciosEspeciales()" required> No
+        <br>
+        <div id="cantidadPreciosEspeciales" style="display:none;">
+            <label for="numPreciosEspeciales">Ingrese la cantidad de precios especiales:</label>
+            <input type="number" id="numPreciosEspeciales" name="numPreciosEspeciales" oninput="mostrarPreguntasPreciosEspeciales()" required>
+            <br>
+        </div>
+        <div id="preguntasPreciosEspeciales"></div>
+        <br>
+        <label>¿Hubo garrafones vendidos a crédito?</label>
+        <input type="radio" name="garrafonesCredito" value="si" onclick="mostrarCantidadGarrafonesCredito()" required> Sí
+        <input type="radio" name="garrafonesCredito" value="no" onclick="ocultarCantidadGarrafonesCredito()" required> No
+        <br>
+        <div id="cantidadGarrafonesCredito" style="display:none;">
+            <label for="garrafonesFiados">Ingrese la cantidad de garrafones vendidos a crédito:</label>
+            <input type="number" id="garrafonesFiados" name="garrafonesFiados" required>
+            <br>
+        </div>
+        <br>
+        <label>¿Hubo garrafones abonados?</label>
+        <input type="radio" name="garrafonesAbonados" value="si" onclick="mostrarCantidadGarrafonesAbonados()" required> Sí
+        <input type="radio" name="garrafonesAbonados" value="no" onclick="ocultarCantidadGarrafonesAbonados()" required> No
+        <br>
+        <div id="cantidadGarrafonesAbonados" style="display:none;">
+            <label for="garrafonesAbonadosCantidad">Ingrese la cantidad de garrafones abonados:</label>
+            <input type="number" id="garrafonesAbonadosCantidad" name="garrafonesAbonadosCantidad" required>
+            <br>
+        </div>
+        <br>
+        <label>¿Hubo algún gasto extra?</label>
+        <input type="radio" name="gastoExtra" value="si" onclick="mostrarCantidadGastoExtra()" required> Sí
+        <input type="radio" name="gastoExtra" value="no" onclick="ocultarCantidadGastoExtra()" required> No
+        <br>
+        <div id="cantidadGastoExtra" style="display:none;">
+            <label for="gastoExtraCantidad">Ingrese la cantidad del gasto extra:</label>
+            <input type="number" id="gastoExtraCantidad" name="gastoExtraCantidad" required>
+            <br>
+        </div>
+        <br>
+        <label for="precioLiquido">Ingrese el precio de compra del líquido por garrafón:</label>
+        <input type="number" id="precioLiquido" name="precioLiquido" required>
+        <br>
+        <label for="garrafonesLlenar">Ingrese la cantidad de garrafones a llenar con líquido:</label>
+        <input type="number" id="garrafonesLlenar" name="garrafonesLlenar" required>
+        <br>
+        <button type="button" onclick="calcularIngresos()">Calcular</button>
+    </form>
+    <div id="resultados"></div>
+</body>
+
+<script src="Script.js"></script>
+
+</html>

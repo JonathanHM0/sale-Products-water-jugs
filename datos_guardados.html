@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Guardados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+        }
+
+        .card li strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datos Guardados</h1>
+    <div class="card" id="contenedorDatos"></div>
+
+    <script>
+         // Función para agregar nuevos datos al contenedor
+         function agregarDatos(datos) {
+            // Crear un nuevo contenedor div para los nuevos datos
+            var nuevoContenedor = document.createElement('div');
+            nuevoContenedor.classList.add('datosContainer');
+
+            // Crear un nuevo elemento div para los nuevos datos
+            var nuevoElemento = document.createElement('div');
+            nuevoElemento.classList.add('card');
+
+            // Construir el HTML con los datos en un formato de tarjeta
+            var html = '<h2>Datos Guardados</h2>';
+            html += '<ul>';
+            for (var key in datos) {
+                if (datos.hasOwnProperty(key)) {
+                    html += '<li><strong>' + key + ':</strong> ' + datos[key] + '</li>';
+                }
+            }
+            html += '</ul>';
+            
+            // Agregar el HTML al nuevo elemento div
+            nuevoElemento.innerHTML = html;
+            
+            // Agregar el nuevo elemento al contenedor de datos
+            nuevoContenedor.appendChild(nuevoElemento);
+
+            // Agregar el nuevo contenedor al contenedor principal
+            document.getElementById('contenedorDatos').appendChild(nuevoContenedor);
+        }
+
+        // Script para obtener los datos de la URL y agregarlos al contenedor
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const datosCodificados = urlParams.get('datos');
+
+        if (datosCodificados) {
+            const datosJSON = decodeURIComponent(datosCodificados);
+            const datos = JSON.parse(datosJSON);
+            agregarDatos(datos);
+        }
+    </script>
+</body>
+</html>
